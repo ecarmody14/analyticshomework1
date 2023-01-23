@@ -1,0 +1,11 @@
+title: "Erin's Website"
+navbar:
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Posts"
+      href: posts.html
+  search: true
+output: 
+  html_document:
+    theme: flatly

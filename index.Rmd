@@ -1,0 +1,44 @@
+---
+title: "Introduction"
+author: "Erin Carmody"
+output: 
+  html_document:
+    theme: flatly
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+![](images/IMG_6962%20(1)-01.jpg){width="150"}
+
+## Background
+
+Hi, my name is Erin Carmody. On this page, you can find information regarding my education, job experiences, hobbies, and career aspirations.
+
+## Education
+
+-   Received bachelor's degrees for finance and information systems from the University of Pittsburgh at Johnstown in April 2022
+-   Currently working towards master's degree in data analytics at the University of Charleston in West Virginia
+
+## Job Experiences
+
+-   From June-August of 2021 and 2022, I interned at the Federal Home Loan Bank in Pittsburgh in their Data Services Department.
+    -   assisted with development of a workflow in Informatica
+    -   used SQL coding to extract data from their tables and organize spreadsheets 
+    - published Tableau dashboards to identify any errors
+-   I coach at Pittsburgh Elite Volleyball Association where I train female athletes in the fundamentals of volleyball.
+
+## Hobbies and Interests
+
+-   I have played volleyball since I was 13 years old and played collegiate.
+-   I love the author Colleen Hoover. My favorite book from her is Verity.
+-   I enjoy outdoor activities like hiking, skiing, and wake boarding.
+
+## Career Aspirations
+
+-   Upon completion of my master's degree, I hope to work as a data analyst in my hometown of Pittsburgh, PA.
+
+## LinkedIn
+
+[Click here](https://www.linkedin.com/in/carmody-erin/) to access my LinkedIn profile.
