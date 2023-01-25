@@ -5,6 +5,8 @@ navbar:
       href: index.html
     - text: "Posts"
       href: posts.html
+    - text: "Projects"
+      href: projects.html
   search: true
 output: 
   html_document:
