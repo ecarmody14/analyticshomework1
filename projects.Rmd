@@ -1,0 +1,50 @@
+---
+title: "Data Ethics Final Project Ideas"
+author: "Erin Carmody"
+date: "1/24/2023"
+output: 
+  html_document:
+    theme: flatly
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Data Privacy Issues Topics
+The privacy issues I decided to focus on are:
+
+-   Data Surveillance
+-   DNA Privacy
+-   Information Sharing On Social Networks
+
+### Three Projects of Interest
+Three of the articles from the Privacy Project that I am interested in are:
+
+-   ["Total Surveillance Is Not What America Signed Up For"](https://www.nytimes.com/interactive/2019/12/21/opinion/location-data-privacy-rights.html)
+-   ["Why Are You Publicly Sharing Your Child's DNA Information"](https://www.nytimes.com/2020/01/02/opinion/dna-test-privacy-children.html#:~:text=This%20is%20because%20we%20have,best%20interests%20of%20their%20children.)
+-   ["No, Facebook Is Not Secretly Listening to You"](https://www.nytimes.com/2019/08/20/opinion/facebook-privacy.html)
+
+### Data Sources
+Additional data sources from the projects include:
+
+-   "How (not) to protect genomic data privacy in a distributed network: using trail re-identification to evaluate and design anonymity protection systems"
+[Click here](https://dataprivacylab.org/dataprivacy/projects/trails/dnaTrails.pdf)
+-   "Information Revelation and Privacy in Online Social Networks"
+[Click here](https://dataprivacylab.org/dataprivacy/projects/facebook/facebook1.pdf)
+-   "Privacy-Enhanced Linking"
+[Click here](https://dataprivacylab.org/dataprivacy/projects/pel/paper.pdf)
+
+### Data Privacy Projects 
+Three of the data privacy projects that are associated with the projects I selected above are: 
+
+-   Social Networks Project
+-   Privacy-Preserving Surveillance Project
+-   The Genomic Privacy Project
+
+### Purposes for Selections
+I chose to focus on information sharing with social media because it has become such a big part of our society. People all over the world are using these platforms freely sharing their data. 
+
+I chose to focus on data surveillance after our discussion post assignment for week three. I wanted to further my research around this idea seeing how involved the government is in data capture.
+
+I chose to focus on DNA privacy because I have always wanted to learn more about how companies like 23andMe and Ancestory.com are using DNA data that is sent to them. 
