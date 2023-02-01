@@ -47,10 +47,14 @@ dim(troll_tweets) #Dimensions: 175432 x 16
 #Exploratory Analytics
 #Bar plot of Regions
 #Labels are each countries respective abbreviation
+#The top three regions with the highest count are the U.S., Unknown, and Azjerbaijan. 
+#From the table, we see that France has the lowest with only 1. 
 x = table(troll_tweets$region)
 barplot(x, main="Regions Bar Plot", col='blue', ylab="Number of People", names.arg =c("AZR","FR", "DE", "IQ","IL","RU","UAE","UK", "US","Unknown"))
 
 #Pie chart for account category
+#The top three account categories were RightTroll, NewsFeed, and HashtagGamer.
+#The lowest account category was Fearmonger at 331. 
 c = data.frame(table(troll_tweets$account_category))
 ggplot(c, aes(x = "", y = Freq, fill = Var1)) +
   geom_col(color = "black") +
@@ -60,7 +64,11 @@ ggplot(c, aes(x = "", y = Freq, fill = Var1)) +
   guides(fill = guide_legend(title = "Account Category"))
 
 #Scatter plot of followers and retweets
+#The variables have a strong positive correlation with one another. #There appears to be several outliers in the data set. 
+#Most of the data is near the lower half of the data set. 
+#The correlation coefficient of the variables is 0.7133984
 ggplot(troll_tweets, aes(x=followers, y=updates)) + geom_point()
+cor(troll_tweets$followers, troll_tweets$updates) #0.7133984
 
 #Unnest Tokens
 troll_tweets_untoken = troll_tweets %>%
@@ -70,7 +78,7 @@ troll_tweets_untoken = troll_tweets %>%
 troll_tweets_cleaned = troll_tweets_untoken %>%
   anti_join(stop_words)
 
-#Removing additional stopwords
+#Removing additional stopwords such as https, http, t.co, rt, amp, single numbers, and single letters
 troll_tweets_cleaned = troll_tweets_cleaned %>%
   filter(!word == "https") %>%
   filter(!word == "http") %>%
@@ -86,6 +94,9 @@ troll_tweets_small = troll_tweets_cleaned %>%
   slice_max(order_by = n, n = 50) # 50 most occurring words
 
 #Visualizing top 50 words
+#The top 5 most frequent words are news, trump, local, politics, and video. 
+#The 5 least frequent words from the graph are stop, city, russia, live, and game. 
+#News and trump both have a frequency over 15,000.
 ggplot(troll_tweets_small, 
        aes(y = fct_reorder(word,n), x = n)) +
   geom_col() + 
@@ -99,6 +110,8 @@ troll_tweets_sentiment = troll_tweets_cleaned %>%
   inner_join(get_sentiments("bing"))
 
 #Count the sentiments
+#The highest positive frequency word is trump at 16,012. 
+#The highest negative frequency word is breaking at 3,843.
 troll_tweets_sentiment %>% 
   count(word, sentiment, sort = TRUE)
 
@@ -108,10 +121,16 @@ get_sentiments("bing") %>%
   count(sentiment)
 
 #Create word cloud
+#News and Trump appear the largest making them the most frequent. 
+#Other high frequency words in the graph include local, politics, video, sports, breaking, and people. 
 troll_tweets_small %>%
   with(wordcloud(word, n, max.words = 50))
 
 #Create word cloud colored by sentiment
+#Trump is the largest positive word in the graph.
+#Other positive words include top, love, support, and free. 
+#Breakign is the largest negative word in the graph.
+#Other negative words include death, dead, and killed. 
 troll_tweets_sentiment %>%
   inner_join(get_sentiments("bing")) %>%
   count(word, sentiment, sort = TRUE) %>%
