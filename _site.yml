@@ -9,6 +9,8 @@ navbar:
       href: projects.html
     - text: "Final"
       href: ethicsfinal.html
+    - text: "Midterm"
+      href: midterm.html
   search: true
 output: 
   html_document:
