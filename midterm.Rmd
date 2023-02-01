@@ -1,0 +1,127 @@
+---
+title: "Midterm Exam"
+author: "Erin Carmody"
+output: 
+  html_document:
+    theme: flatly
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = TRUE, cache = TRUE)
+
+#Packages
+library(tidyverse)        
+library(tidymodels)        
+library(naniar)            
+library(lubridate)         
+library(dbplyr)            
+library(mdsr)              
+library(tidytext)          
+library(textdata)          
+library(reshape2)
+library(wordcloud)         
+library(stopwords)
+library(ggplot2)
+library(dplyr)
+library(reshape2)
+
+troll_tweets = read_csv("https://raw.githubusercontent.com/fivethirtyeight/russian-troll-tweets/master/IRAhandle_tweets_12.csv")
+
+#Selecting only English Tweets
+troll_tweets = troll_tweets[troll_tweets$language == "English",]
+
+dim(troll_tweets) #Dimensions: 175,966 x 21
+
+#Drop unnecessary columns
+troll_tweets = subset(troll_tweets, select=-c(post_type,tco3_step1,tco1_step1, tco2_step1, article_url))
+
+#Converting ? to NA values
+troll_tweets$account_type = gsub("?",NA,troll_tweets$account_type, fixed = TRUE)
+
+#Remove all NA values
+troll_tweets = na.omit(troll_tweets)
+
+#New Dimensions
+dim(troll_tweets) #Dimensions: 175432 x 16
+
+#Exploratory Analytics
+#Bar plot of Regions
+#Labels are each countries respective abbreviation
+x = table(troll_tweets$region)
+barplot(x, main="Regions Bar Plot", col='blue', ylab="Number of People", names.arg =c("AZR","FR", "DE", "IQ","IL","RU","UAE","UK", "US","Unknown"))
+
+#Pie chart for account category
+c = data.frame(table(troll_tweets$account_category))
+ggplot(c, aes(x = "", y = Freq, fill = Var1)) +
+  geom_col(color = "black") +
+  geom_text(aes(label = Freq),
+            position = position_stack(vjust = 0.5))+
+  coord_polar(theta = "y") +
+  guides(fill = guide_legend(title = "Account Category"))
+
+#Scatter plot of followers and retweets
+ggplot(troll_tweets, aes(x=followers, y=updates)) + geom_point()
+
+#Unnest Tokens
+troll_tweets_untoken = troll_tweets %>%
+  unnest_tokens(word, content)
+
+#Removing stopwords
+troll_tweets_cleaned = troll_tweets_untoken %>%
+  anti_join(stop_words)
+
+#Removing additional stopwords
+troll_tweets_cleaned = troll_tweets_cleaned %>%
+  filter(!word == "https") %>%
+  filter(!word == "http") %>%
+  filter(!word == "t.co") %>%
+  filter(!word == "rt") %>%
+  filter(!word == "amp") %>%
+  filter(!str_detect(word, pattern = "\\b(.)\\b")) %>%
+  filter(!str_detect(word, pattern = "[[:digit:]]"))
+
+#Subset data to see count of top word
+troll_tweets_small = troll_tweets_cleaned %>%
+  count(word, sort = TRUE) %>%
+  slice_max(order_by = n, n = 50) # 50 most occurring words
+
+#Visualizing top 50 words
+ggplot(troll_tweets_small, 
+       aes(y = fct_reorder(word,n), x = n)) +
+  geom_col() + 
+  labs(title="Top 50 Most Frequent Words", x="Frequency", y="Words")
+
+#Look at sentiment
+get_sentiments("bing")
+
+#Assigning sentiment to each word
+troll_tweets_sentiment = troll_tweets_cleaned %>%
+  inner_join(get_sentiments("bing"))
+
+#Count the sentiments
+troll_tweets_sentiment %>% 
+  count(word, sentiment, sort = TRUE)
+
+#Total positive and negative sentiments
+#Total of 4,781 negatives and 2,005 positives. 
+get_sentiments("bing") %>%
+  count(sentiment)
+
+#Create word cloud
+troll_tweets_small %>%
+  with(wordcloud(word, n, max.words = 50))
+
+#Create word cloud colored by sentiment
+troll_tweets_sentiment %>%
+  inner_join(get_sentiments("bing")) %>%
+  count(word, sentiment, sort = TRUE) %>%
+  acast(word ~ sentiment, value.var = 'n', fill = 0) %>%
+  comparison.cloud(colors = c("red", "green"),
+                   max.words = 50)
+
+#Summary and Conclusions
+#I believe there are more negative than positive words because the goal of the Russians was to try to divide America through the political conversations. Thus, they started friction from posting contradicting information and creating arguments between and within the political parties. This could have resulted in them using more negative words over positive in order to stir up the conversation and paint a negative light on the Democratic Party. 
+#I was not surprised by any of the words that were categorized as positive or negative, but I instead was shocked at how aggressive some of the negative words were. Several words were associated to death or killing creating a strong sense hatred and negativity. For the positive words, I was not suprised that Trump was not only positive but the most frequent word. With the Russians wanting to support Trump in the election, it is understandable that they would use his name often in a positive light. 
+```
+## Undoing Bias Discussion
+One misconception that the article discusses is the idea that bias starts in the data. The bias can present itself in any part of phases of processing the data. It can occur in pre-processing, post-processing, design, selecting models, etc. There are several steps that go into analyzing the data with decisions happening through out each step. The decisions that are made in any one of these processes can end up creating bias. While bias can occur in the data, it is not the single cause of bias. One example the article mentioned was automation bias. This type of bias happens as soon as an algorithm is incorporated into the data resulting in more bias of human interpretations. Bias can happen in the data, but we need to remember that those decisions are not the only ones establishing the bias involved in models. 
