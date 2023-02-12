@@ -1,0 +1,85 @@
+---
+title: "Analytics Homework 3 Bias Assessment"
+author: "Erin Carmody"
+output: 
+  html_document:
+    theme: flatly
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = TRUE, cache = TRUE)
+
+#Packages 
+library(dplyr)
+library(ggplot2)
+library(AICcmodavg)
+
+#Downloading data set
+crime = read.csv("KCPD_Crime_Data_2009_Final.csv")
+
+#ANOVA Tests
+#Offense with race and sex
+model = aov(Offense ~ Sex + Race, data = crime)
+#Involvement number with race and sex
+model2 = aov(Invl_No ~ Sex + Race, data = crime)
+
+#ANOVA Test Summaries
+#Summary statistics for offense
+#P-values are both close to zero indicating statistical significance.
+#We can reject the null hypothesis that all group means are equal. 
+summary(aov(Offense ~ Sex + Race, data = crime))
+#Summary statistics for involvement number
+#Summary statistics for offense
+#P-values are both close to zero indicating statistical significance.
+summary(aov(Invl_No ~ Sex + Race, data = crime))
+
+#Tukey Post-Hoc Tests
+#Offense Post-Hoc Test
+#Adjusted p-values that are close to zero indicating significant mean difference include all gender values, Black and Asian races, Unknown and Asian races, White and Asian races, and White and Black races.
+TukeyHSD(model)
+#Involvement Number Post-Hoc Test
+#Adjusted p-values that are close to zero indicating significant mean differences include all gender values, Unknown and Black races, White and Black races, and White and Unknown races.
+TukeyHSD(model2)
+```
+
+### Data Set Link
+
+[Kansas City Crime Data](https://www.kaggle.com/datasets/qusaybtoush1990/kansas-city-crime-data?select=KCPD_Crime_Data_2009_Final.csv)
+
+### Answering Questions for Qualatative Assessment
+
+#### Data Items
+
+**Which data items are included in the original measurements, and which are derived?**
+
+There appears to be many missing values with blanks in the data set especially present in columns for age, zip code, to date, to time, IBRS, sex, and race. The original measurements include the report number, report date, report time, offense, and description of offense. 
+
+**What is the granularity of data in time and identifiers?**
+
+The data contains information from crimes committed in Kansas City from 2009-2016. There is information on the date and time the that crime was committed and reported. Location information including address, city, zip code, district, and area of the crime is present in the data set. Identifying information of the subject of the matter includes race, age, and sex. Crimes are labled under report number. 
+
+**What is the full population size?**
+
+The population of this data set consists of people who committed crimes, suspects, and victims in Kansas City. There is a total of 132,978 data observations in the file. This only captures a small area of the state and even more the country. Sampling from other cities in Missouri could create a better sample to represent the state. 
+
+#### Data Collection
+
+**How long do we think participants will continue to use the data collection mechanism?**
+
+I think this mechanism will continue for a long time as police reports are standard procedure when crimes are committed. Arrest records are open for public view, so individuals committing the crime are subject to participating. 
+
+**Who has access to the collection mechanism?**
+
+The information is gathered from police reports in Kansas City, MO. Only the police officers have access to collecting this information. There is no pay wall. Only criminals and victims from in Kansas City involved in the crime are accounted for in this data set. There is very minimal geographic diversity for the data as it only captures one small area in the United States for accessing crimes. 
+
+**Do participants know they are being monitored or collected?**
+
+Crime records are available to the public, so when someone goes to jail, it is known that the information is open for anyone to see. This includes their pictures, address, offense committed, etc. 
+
+### Summary of Qualitative Assessment
+
+Through the qualitative assessment, several potential biases were identified from the data set. Selection bias could be present as the data set only contains crimes that occurred in Kansas City, so the study only has people located in that specific geographical area. This data set holds specific location data including zip codes, districts, area, and latitudes and longitudes. Zip codes have been known to hold bias when they aren't normalized such as containing prior behaviors of segregation. Avoiding this feature and focusing on census lines instead can give a better representation of the true population. Group attribution bias could be present in the data set as well. If it is found that a certain race commits more crimes than others, this bias could occur as people could stereotypes those people believing that anyone of that race commits crimes. This same bias could occur with gender in the data set as well. Ensuring that the protected classes are well represented in the data and mitigating any imbalance is key to minimizing bias in the data. The analysis showed how bias can occur in many stages of the AI cycle. 
+
+### Summary of Quantitative Assessment 
+
+The technique I chose for this assessment was the ANOVA/Tukey procedure. This method helps identify factors such a categorical variables that have major differences in mean values. The categorical variables selected for this assessment were sex and race as they both are protected classes under the United States law. Using the aov() function in r, sex and race were tested with offense and involvement number. Results showed p-values very close to zero showing high significance. This meant that the null hypothesis could be rejected that all group means are equal. To determine if there was significant mean difference between the each group, a post-hoc test was conducted. Analyzing the adjusted p-values helped identify the values with significant mean differences. For offense, there was significant mean difference between Black and Asian races, Unknown and Asian races, White and Asian races, White and Black races, and all gender values. For involvement, the most significant mean differences were between Unknown and Black races, White and Black races, White and Unknown races, and all gender values. 

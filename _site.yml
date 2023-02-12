@@ -11,6 +11,8 @@ navbar:
       href: ethicsfinal.html
     - text: "Midterm"
       href: midterm.html
+    - text: "Bias Assessments"
+      href: homework3.html
   search: true
 output: 
   html_document:
