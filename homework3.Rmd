@@ -13,6 +13,8 @@ knitr::opts_chunk$set(echo = TRUE, eval = TRUE, cache = TRUE)
 library(dplyr)
 library(ggplot2)
 library(AICcmodavg)
+library(tidyverse)
+library(stringr) #adding trailing zeros
 
 #Downloading data set
 crime = read.csv("KCPD_Crime_Data_2009_Final.csv")
@@ -40,6 +42,24 @@ TukeyHSD(model)
 #Involvement Number Post-Hoc Test
 #Adjusted p-values that are close to zero indicating significant mean differences include all gender values, Unknown and Black races, White and Black races, and White and Unknown races.
 TukeyHSD(model2)
+
+#K-anonymity-Generalization and Suppression
+#Generalization
+#Placing age values into groups 
+crime["Age_Group"] = cut(crime$Age, c(0, 18, 36, 54, 72, Inf), c("0-18", "19-36", "37-54", "55-72", ">72"), include.lowest=TRUE)
+
+#Removal of numbers from Address column
+crime$Address = gsub("[[:digit:]]", "", crime$Address) 
+
+#Converting last value in zip codes to 0
+#Extract first four numbers from values in zip code column 
+z = substr(crime$Zip.Code, 0, 4)
+#Add zeros to the end of each zip code
+crime$Zip.Code = str_pad(z, width=5, side="right", pad="0")
+
+#Suppression
+#Removal of Location column
+crime = crime[, -c(23)]
 ```
 
 ### Data Set Link
@@ -83,3 +103,20 @@ Through the qualitative assessment, several potential biases were identified fro
 ### Summary of Quantitative Assessment 
 
 The technique I chose for this assessment was the ANOVA/Tukey procedure. This method helps identify factors such a categorical variables that have major differences in mean values. The categorical variables selected for this assessment were sex and race as they both are protected classes under the United States law. Using the aov() function in r, sex and race were tested with offense and involvement number. Results showed p-values very close to zero showing high significance. This meant that the null hypothesis could be rejected that all group means are equal. To determine if there was significant mean difference between the each group, a post-hoc test was conducted. Analyzing the adjusted p-values helped identify the values with significant mean differences. For offense, there was significant mean difference between Black and Asian races, Unknown and Asian races, White and Asian races, White and Black races, and all gender values. For involvement, the most significant mean differences were between Unknown and Black races, White and Black races, White and Unknown races, and all gender values. 
+
+
+### Week 6 Analytics Homework 
+
+#### Data link to Data Privacy Project
+
+#### K-Anonymity - Generalization and Suppression
+
+[De-identification Project](https://dataprivacylab.org/projects/kanonymity/kanonymity2.html)
+
+#### Data Set Link
+
+[Kansas City Crime Data](https://www.kaggle.com/datasets/qusaybtoush1990/kansas-city-crime-data?select=KCPD_Crime_Data_2009_Final.csv)
+
+#### Resolving data privacy issues
+
+The goal of k-anonymity is to hide individual's personal data in a larger data set to protect their identify and privacy. It uses a combination of two techniques, generalization and suppression, to mask and remove identifiable attributes. Generalization takes the specific value of the individuals and creates a more general one. This keeps the data in the study but reduces the chances of that individual being identified by that value. Suppression completely removes the specific attribute from the data only if it provides no value to the study. This technique is ideal for protecting against re-identification. In data that contains sensitive information such as health or crime, de-identification methods can allow the individuals to feel a sense of security in regards to their personal information. For victims that may wish to have their information private, these methods can help ensure that. Applying these concepts to the "Kansas City Crime Data Set", I used generalization on the age, address, and zip code columns. For the age column, I separated the values into age ranges to generalize that attribute. For the zip code column, I removed the last digit from each value and replaced it with a zero to widen the net to a larger geographical area. Numbers were also removed from the Address column to only reveal street name, so specific house number can't be identified in the data. Removal of the Location column occurred as it contained duplicate and irrelevant information that would not be needed for analysis. Due to the other location columns, including address, zip code, city, beat, area, and rep district, the location column can be extracted from the data. 
