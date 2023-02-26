@@ -1,0 +1,108 @@
+---
+title: "Data Privacy Final Project"
+author: "Erin Carmody"
+date: "2/26/2023"
+output: 
+  html_document:
+    theme: flatly
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Part 1
+
+### No, Facebook Is Not Secretly Listening to You
+
+[Article Link](https://www.nytimes.com/2019/08/20/opinion/facebook-privacy.html)
+
+#### **Summary**
+Applications like Facebook are able to gather so much data about us such as contacts, locations, purchase history, etc. that advertisers are able to predict what we say without having to listen to us. However, there have been multiple occasions where devices have been "accidentally triggered" to turn on listening to everything people are saying. Contractors have verified that they were given access to audio chats from Facebook Messenger, audio clips from Google Assistant, audio files from Amazon Alexa, Siri clips from Apple, and Skype conversations from Microsoft with the task of quality control. Much of this "accidental" data contains personal and confidential information proving to be an invasion of the consumer's privacy. These companies don't disclose the use for the data which could have prevented much of the backlash that they received. They continue to keep the human contractors behind the scenes in order to protect the image of artificial intelligence. People need to be more informed about the devices they allow in their home as they are recording us without us knowing. 
+
+#### **Consequences and Impact**
+Invading people's privacy by recording personal conversations without their knowledge has led to bad press and distrust towards these organizations. This could inevitably lead to diminished sales and revenue for these companies as people could start to steer clear of these voice activated devices. As more and more people discover the kind of data they can collect like addresses, love life conversations, or even medical information, they may no longer see the need to keep these electronics in their houses. Due to the lack of honesty from these large corporations, it not only paints a negative picture towards them, but artificial intelligence as well. Security can be an unintended consequence in this situation as the data is being sent to contractors. Without proper authorization techniques, this data can be vulnerable leading to data breaches if not taken seriously. 
+
+#### **Sources of Harm**
+
+Potential sources of harm could include historical bias. Even if data has been well sampled and measured, the model can still be trained not representing our current world due to pre-existing conditions. Audio files were gathered from an array of applications from users all over the globe. The article described how contractors are managing quality control of these audio files in order to protect the image of AI. Stereotypes first established by humans can carry into perfectly measured sample data as the AI systems have been built with these word embeddings. If speech recognition AI software were used on this data set, the word embeddings could lead to harmful stereotypes associated with topics like gender or race. For example, gender biased occupations such as associating women with nurses and men with doctors can lead to reinforcement of these stereotypes in the syste if not properly adjusted. 
+
+#### **Recommendation Systems in AI**
+
+Recommendation systems in AI can be used with this project by personalizing product suggestions for users based on their interests. Collaborative filtering is one of the most common methods used by recommendation systems that believes if people have similar interests then they are more likely to like similar products. In the social media world, interests can be gathered through identifying which users like the same posts, follow the same accounts, or interact on pages related to similar topics. This information can then be used to analyze a large group's preferences predicting the likelihood that they would like a certain product based on how similar users felt about it. Optimizing the customer's experience by tailoring content based on their preferences exposes them to new content that they may have never knew existed. Recommendations in this case would focus on items to be purchases such as clothes, food, electronics, etc. as the intent is to attract the customers to buy these items through tailored marketing from recommendation engine. 
+
+### Why Are You Publicly Sharing Your Child's DNA
+
+[Article Link](https://www.nytimes.com/2020/01/02/opinion/dna-test-privacy-children.html#:~:text=This%20is%20because%20we%20have,best%20interests%20of%20their%20children.)
+
+#### **Summary**
+
+Parents utilizing online genetic testing services like 23andMe and family genealogy websites like MyHeritage are exposing their children’s personal health data.They are testing their children’s DNA through the Internet allowing it to be accessed and sold to anyone including marketing firms, insurance companies, the government, and investigators. Many of these children aren’t at the age of consent causing them to lose their right not to know specific information. While there is legislation protecting children from third parties sharing their data, it does not apply to parents sharing their children’s data. With technology outpacing different generations, the consequences of their actions are not considered as they don’t realize what this data can be used for. Parents need to not only protect their children, but the privacy of their data too.
+
+#### **Consequences and Impact**
+
+By sharing this private health data to the world, parents don’t realize how severe the consequences of their actions can be. This data is forever exposed to the public. If a child was to learn they had a certain illness from the DNA testing, discrimination from employers, insurance companies, or even other children at school may occur. In addition, the child may have never wanted to know this information but was too young to deny consent. Knowing this information may cause distress or anxiety for them. Other countries such as France and Austria allow children to sue their parents if information is shared without their consent. Lawsuits or other legal action could create tension and disunity in families. This data in the hands of law enforcement can be used to compare DNA from crime scenes as the parents have made the data available on these open source websites
+
+#### **Sources of Harm**
+
+Potential sources of harm from this case could include representation bias. This is a type of bias that centers around the idea of the sample under representing the population in some way failing to generalize accurately for a portion of the population. The data is only available for the sample of children and adults that willingly participate in submitting their DNA to one of the mentioned services. If research from this data wished to have a target population of all children, the development sample would be skewed. Many individuals submitting their DNA to these websites believe they could have a medical issue. In the article, the woman wanted to submit her children's DNA to see if they contained a mutation of the MTHER gene as it has been linked to many disorders. Studies focused on predicting medical conditions would then result in being heavily skewed due to the data pool. This would be an example of sampling bias.
+
+#### **Recommendation Systems in AI**
+
+Recommendation systems in the medical field can be used to distribute information or provide treatment options to patients based on information such as their diagnosis. One study used collaborative filtering based on the gene interest of patients to match higher accuracy recommendations about genes to patients (Hu et al., 2018).This algorithm was able to test hepatocelluar carcinoma and found six genes that could be related to causing live cancer. The article from this case focused on DNA sequencing services gathering personal and medical information from the participants. Using this data, similar recommendation systems can be used to offer customized treatments based on the genes creating better and smarter options for these individuals. Matching people into groups with collaborative filtering based on similar traits and gene types can provide tailored care to treat their diagnoses. Optimizing decision making techniques through recommendation systems could potential help to save lives one day. 
+
+### Total Surveillance Is Not What America Signed Up 
+
+[Article Link](https://www.nytimes.com/interactive/2019/12/21/opinion/location-data-privacy-rights.html)
+
+#### **Summary**
+
+This article explains how technology companies have brainwashed society into accepting corporate surveillance as a social norm. While location data from our smart devices is protected under constitutional provisions enacted by the Supreme Court, private sectors are able to control our data without the same provisions. Numerous applications on our phones know our exact location, which can be used by companies to know exactly where we are in real-time. There is no avoiding it. These companies can take this location data and sell it to the highest bidder for profit. Users may have the option to opt-out to reduce tracking, but they can never fully opt-out. While beneficial for reviewing restaurants or mapping traffic, the amount and sensitivity of the data being collected is an invasion of privacy. Congress must enforce restrictions for collecting data from minors, increase security, clearly identify to consumers how the data will be used, classify location data as personal identifiable information and more to protect society from corporate surveillance. These companies are not being tracked, so why should citizens be subjected to it?
+
+#### **Consequences and Impact**
+
+Corporate companies having the ability to freely survey consumer data with little restrictions leads to unfair and unjust practices by these companies. It evokes the issue of privacy invasion and personal data can be captured for the benefit of these companies. As the public becomes more aware of this situation, it can lead to less social media use or application use of these features that are collecting the private data. Less interaction from the user can make it harder to gather insights. This privacy invasion can create a negative image towards these companies as well leading to lower revenue and lower user engagement. Impact on the corporate side results in more data and higher complexity. This takes up more time, energy, and resources as the data is being collected in various formats and sizes. It needs to be cleaned, processed, sorted, and analyzed to gain the value from it. 
+
+#### **Sources of Harm**
+
+Potential sources of harm from this case could include representation bias and evaluation bias. Representation bias can occur when using the location data of the users if it does not represent the true use population. By gathering data on individuals from only one county when the use population is the entire city does not create a good representation. Sampling bias can occur in location data as well. If a study is conducted on people that enter a certain location from 9:00A.M to 5:00P.M. from Monday to Friday, it eliminates that ability for people how work corporate jobs to participate. Evaluation bias focuses on the benchmark not representing the population, and the quality is based on those benchmarks. When using location data from applications, this can happen by excluding specific areas from the study as they are believed to drop the performance level of the model. Implicitly removing certain groups from testing sets creates non-representative data and leads to biased, inaccurate results. 
+
+#### **Recommendation Systems in AI**
+
+Recommendation systems can use data such as location to tailor content based on stores, items, or events that are within a certain proximity of the user. Location-based recommendations accomplish this by using information regarding current or past locations of the user along with their interests and preferences. The article focused on corporate surveillance of individual's locations through different applications. If an individual enters an area near a specific store, recommendations through advertising can be made highlighting that store to the user emphasizing products they may be interested based on their interests. These systems can also be used in providing valuable information to tourists. One study creates a Personalized Location-Based Traveler Recommend-er Systems that provides personalized tourism information to its users (Husain & Dih, 2012). Based on the area that people search or their current travel location, tailored content regarding activities, attractions, and more can be filtered to the user related to their preferences. 
+
+## Part 2
+
+**Data Privacy Projects Selected:**
+
+-   [Personal Genome Project](https://dataprivacylab.org/projects/pgp/index.html)
+-   [The Privacy-Preserving Surveillance Project](https://dataprivacylab.org/projects/homelandsecurity/index.html)
+
+#### How Projects are Related and Methods to Solve Privacy Issues
+
+##### **The Privacy-Preserving Surveillance Project**
+
+This data project relates to my selected article in part 1 as it highlights several practices that can be done to ensure better data privacy associated with social networks. Technologies that are recording and sharing personally identifiable information are the root of the problem. The concern continues as private organizations have the ability to know who we talk to, purchases we made, places we have visited, and more at their fingertips. In the article, major companies like Apple, Google, and Facebook were giving access of these private audio clips gathered from their users electronic devices to contractors. While this information was gathered when customers assumed the devices weren't listening, many people voluntarily give out personal data such as their name, phone number, and address on social media sites. This project uses AI technologies to help minimize people from being vulnerable to identity theft. It alerts individuals that have enough information on the public web that can be combined and used to impersonate them.
+
+For a person to have the ability to impersonate an individual, information including name, social security number, address, and date of birth are needed. Social media networks whether they are used for pleasure such as Facebook or business such as LinkedIn can contain valuable personal data that is gathered by these hackers. Online resumes can be especially vulnerable to these attacks. The "Identity Angel" system performs filtered searches on resumes to identify cases whether data like personal emails, SSN, and birthdays is present. The system found that out of 150 resumes, 140 had complete 9-digit SSNs (Sweeney, 2005). Notifying these individuals about their possible danger of identify theft allowed them to change or remove this crucial information from the Web. Eliminating key factors from online profiles creates a level of protection and sense of security to the users. 
+
+
+##### **Personal Genome Project**
+
+This data project relates to my selected article in part 1 as they both center around the idea of DNA privacy. This project conducted a study demonstrating how participants that voluntarily submitted their genomic data were able to be identified by name using the publicly available data. My selected article discussed the concern of DNA privacy in children as parents were freely giving their information to services like 23andMe. The study was able to accurately predict 84% of the individuals names and up to 97% if it allowed nickname considerations. Many of these DNA sequencing services require additional personal information such as name or date of birth in order to participate. They also tend to require consent forms that do not promise security of the data submit. This project shows how this information can be used for re-identification, but it provides solutions to help protect individuals that still wish to participate. Generalization and suppression methods can be used on highly identifiable data to broaden the data making it harder to link the name to the specific profile. 
+
+To solve the issue of re-identification of the participants in these DNA sequencing services, changing personal information to a more broader sense can decrease the chances of being identified. Generalizing information such as date of birth or zip code makes them less specific and harder to link the individuals. Date of birth field can be modified to just a year expanding the range of potential people in this category. Zip code can be reduced from 5 digit codes making them cover a larger geographical area. Omitting names from uploaded documents can lower the chances of being uniquely identified. By combining a variety of these generalization and suppression techniques, it can create anonymity in this personal data improving its security by limiting re-identification. 
+
+##### **The Privacy-Preserving Surveillance Project**
+
+This data project relates to the selected article as they both address the issue of surveillance in different domains. Many of these individuals don't even realize their data is being gathered as the corporations collecting it don't impose fair information practices. They have no rights to control or correct errors associated with it. In regards to government surveillance, information gathered for these databases can be used to track down watch list individuals. However, it poses a problem as the bulk of the information located in these systems contains data of non-suspicious subjects. Their personal and location based data is subject to being violated in an effort to find and track high profile criminals. Selective revelation methods provide a potential solution to this problem not forcing individuals to have to choose between privacy or safety. Data provided for the surveillance system has a sliding scale of identifiablility allowing the data to change from anonymous to specific depending on the purpose. Regular operation uses the anonymous data, but when more evidence arises, more identifiable information is then released. 
+
+Selective revelation can be applied by corporate companies gathering personal information about people in order to create a level of protect for their data. Legislation can even be created requiring this hierarchy of anonymity to preserve the rights of the data subjects. The selective revelation model was split into five categories, sufficiently anonymous, sufficiently de-identified, identifiable, readily identifiable, and explicitly identified. Based on the situation and apparent need for the information, the system could adjust the identification ability of data. Identifiers such as names or addresses to do not need to be used by these organizations in order to gather valuable insights from the data. Placing these values in the explicitly identified category of the selective revelation model only to be used for necessary purposes creates that safeguard for their personal information. This can make users feel more comfortable knowing their data is safe and can possibly lead to more users willing allowing further surveillance.   
+
+##### **References**
+
+Hu, J., Sharma, S., Gao, Z., &amp; Chang, V. (2018). Gene-based collaborative filtering using Recommender System. Computers &amp; Electrical Engineering, 65, 332–341. https://doi.org/10.1016/j.compeleceng.2017.04.010 
+
+Husain, W., & Dih, L. Y. (2012). A framework of a personalized location-based traveler recommendation system in mobile application. International Journal of Multimedia and Ubiquitous Engineering, 7(3), 11-18.
+
+Sweeney, Latanya. (2005). AI Technologies to Defeat Identity Theft Vulnerabilities.. 136-138. 
